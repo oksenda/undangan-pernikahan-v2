@@ -17,6 +17,7 @@ import { Environment } from "@react-three/drei";
 // Data & 3D
 import weddingData from "../data/wddingData.json";
 import { WeddingRingsScroll } from "./canvas/WeddingRingScroll";
+import GuestPhotoCapture from "./GuestPhotoCapture";
 
 const WeddingCanvas: React.FC<{ guestName: string }> = ({ guestName }) => {
   const galleryImages = weddingData.assets.galleryImages;
@@ -93,6 +94,10 @@ const WeddingCanvas: React.FC<{ guestName: string }> = ({ guestName }) => {
           <section id="rsvp-section">
             <RSVPSection />
           </section>
+
+          <section id="capture-section">
+            <GuestPhotoCapture />
+          </section>
           
           {/* Family Section bisa dimasukkan ke bagian penutup */}
           <FamilySection
@@ -100,6 +105,7 @@ const WeddingCanvas: React.FC<{ guestName: string }> = ({ guestName }) => {
             maleMembers={weddingData.acara.maleMembers}
             femaleMembers={weddingData.acara.femaleMembers}
           />
+          
 
           {/* Spacer Akhir */}
           <div style={{ height: "20vh" }} />
