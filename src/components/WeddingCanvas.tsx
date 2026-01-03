@@ -12,6 +12,7 @@ import { GallerySection } from "./GallerySectionProps";
 import { WeddingTimeSection } from "./WeddingTimeSection";
 import WeddingGiftList from "./gif/WeddingGiftList";
 import { RSVPSection } from "./RSVPSection";
+import { Environment } from "@react-three/drei";
 
 // Data & 3D
 import weddingData from "../data/wddingData.json";
@@ -40,11 +41,17 @@ const WeddingCanvas: React.FC<{ guestName: string }> = ({ guestName }) => {
         zIndex: 0,
         pointerEvents: "none" 
       }}>
-        <Canvas camera={{ position: [0, 0, 5], fov: 45 }}>
-          <Suspense fallback={null}>
-            <WeddingRingsScroll scrollProgress={smoothProgress} />
-          </Suspense>
-        </Canvas>
+      <Canvas camera={{ position: [0, 0, 5], fov: 45 }}>
+        {/* Berikan ambientLight agar jika HDR gagal, objek tetap terlihat */}
+        <ambientLight intensity={0.5} />
+        <pointLight position={[10, 10, 10]} />
+        
+        <Suspense fallback={null}>
+          {/* Gunakan preset agar tidak memanggil file .hdr eksternal yang bikin error fetch */}
+          <Environment preset="sunset" /> 
+          <WeddingRingsScroll scrollProgress={smoothProgress} />
+        </Suspense>
+      </Canvas>
       </div>
 
       {/* 2. LAYER KONTEN HTML */}
@@ -70,8 +77,6 @@ const WeddingCanvas: React.FC<{ guestName: string }> = ({ guestName }) => {
           
           <section id="event-section">
             <WeddingTimeSection 
-              date={weddingData.acara.time.split("T")[0]} 
-              time={weddingData.acara.time.split("T")[1]} 
               targetDate={weddingData.acara.time} 
             />
             <LocationSection />

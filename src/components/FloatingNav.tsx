@@ -1,6 +1,6 @@
 "use client";
 import React, { useState, useEffect } from "react";
-import { Home, Heart, Calendar, MessageSquare, ArrowUp, Music } from "lucide-react";
+import { Home, Heart, Calendar, MessageSquare,Music } from "lucide-react";
 
 interface FloatingNavProps {
   isPlaying: boolean;
@@ -111,7 +111,7 @@ export const FloatingNav: React.FC<FloatingNavProps> = ({ isPlaying, toggleMusic
         </div>
       </div>
 
-      <style jsx>{`
+      <style>{`
         .nav-fixed-wrapper {
           position: fixed;
           bottom: 30px;
@@ -250,7 +250,7 @@ const NavItem = ({ icon, label, onClick }: { icon: React.ReactNode, label: strin
   <div onClick={onClick} className="nav-item">
     <div className="nav-icon">{icon}</div>
     <span className="nav-label">{label}</span>
-    <style jsx>{`
+    <style>{`
       .nav-item {
         display: flex;
         flex-direction: column;

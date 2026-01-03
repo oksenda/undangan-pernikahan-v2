@@ -1,4 +1,4 @@
-import { GiftCardProps } from "../components/gif/GiftCard";
+import type { GiftCardProps } from "../components/gif/GiftCard";
 
 export const GifAccount: GiftCardProps[] = [
   {

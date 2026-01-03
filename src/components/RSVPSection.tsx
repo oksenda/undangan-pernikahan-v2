@@ -197,7 +197,7 @@ export const RSVPSection: React.FC = () => {
         </Row>
       </Container>
 
-      <style jsx global>{`
+      <style>{`
         .custom-scroll::-webkit-scrollbar {
           width: 3px;
         }

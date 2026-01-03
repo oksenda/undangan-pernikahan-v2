@@ -1,4 +1,4 @@
-import { Float, Text, Sparkles, Cloud } from "@react-three/drei"
+import { Float, Sparkles, Cloud } from "@react-three/drei"
 import { useThree, useFrame } from "@react-three/fiber"
 import { useRef, useMemo } from "react"
 import * as THREE from "three"
@@ -58,7 +58,7 @@ function Petals() {
   )
 }
 
-export function WeddingRings({ name1, name2 }: { name1: string; name2: string }) {
+export function WeddingRings() {
   const { size } = useThree()
   const isMobile = size.width < 768
   const scale = isMobile ? 0.7 : 1.3

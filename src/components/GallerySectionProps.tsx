@@ -84,7 +84,7 @@ export const GallerySection: React.FC<GallerySectionProps> = ({ images }) => {
       </Container>
 
       {/* Custom CSS agar tombol navigasi terlihat jelas di atas background gelap */}
-      <style jsx global>{`
+      <style>{`
         .carousel-control-prev-icon,
         .carousel-control-next-icon {
           background-color: #D4AF37;

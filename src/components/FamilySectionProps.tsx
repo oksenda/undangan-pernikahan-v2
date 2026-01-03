@@ -142,7 +142,7 @@ export const FamilySection: React.FC<FamilySectionProps> = ({ title, maleMembers
         </div>
       </Container>
 
-      <style jsx>{`
+      <style>{`
         .family-box {
           transition: all 0.3s ease;
         }

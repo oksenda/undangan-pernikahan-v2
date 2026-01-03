@@ -1,5 +1,5 @@
 "use client";
-import { useState, useLayoutEffect, useEffect } from "react";
+import { useState, useLayoutEffect } from "react";
 import { Container } from "react-bootstrap";
 // Import aset dan data
 import weddingData from "./data/wddingData.json";
