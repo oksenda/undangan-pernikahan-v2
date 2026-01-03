@@ -1,22 +1,32 @@
-import React, { useState, useRef, useEffect } from 'react';
+import { useState, useRef, useEffect, type ChangeEvent } from 'react';
 import Webcam from 'react-webcam';
 import Swal from 'sweetalert2';
 
+// Definisi interface untuk data galeri dari Google Drive
+interface GalleryFile {
+  id: string;
+  thumbnailLink: string;
+}
+
 const GuestPhotoCapture = () => {
-  const webcamRef = useRef(null);
-  const fileInputRef = useRef(null);
-  const [imgSrc, setImgSrc] = useState(null);
-  const [gallery, setGallery] = useState([]);
-  const [isUploading, setIsUploading] = useState(false);
-  const [showCamera, setShowCamera] = useState(false);
+  // 1. Perbaikan Type pada useRef
+  const webcamRef = useRef<Webcam>(null);
+  const fileInputRef = useRef<HTMLInputElement>(null);
+
+  // 2. Perbaikan Type pada useState
+  const [imgSrc, setImgSrc] = useState<string | null>(null);
+  const [gallery, setGallery] = useState<GalleryFile[]>([]);
+  const [isUploading, setIsUploading] = useState<boolean>(false);
+  const [showCamera, setShowCamera] = useState<boolean>(false);
 
   const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbxql-Gitbyyu6mSekjuzwGOnW-gBTr738KMdQgDWEZBfUIZXj3-v4T5DPKLSYfEef-izA/exec';
 
-  const luxurySwal = (title, text, icon) => {
+  // 3. Perbaikan Parameter Types pada luxurySwal
+  const luxurySwal = (title: string, text: string, icon: 'success' | 'error' | 'warning' | 'info') => {
     return Swal.fire({
-      title: title,
-      text: text,
-      icon: icon,
+      title,
+      text,
+      icon,
       background: '#1a1a1a',
       color: '#ffffff',
       confirmButtonColor: '#d4af37',
@@ -28,16 +38,16 @@ const GuestPhotoCapture = () => {
     });
   };
 
-  // --- PERBAIKAN: Fungsi buka kamera dengan cek izin ---
   const handleOpenCamera = async () => {
     try {
-      if (navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
+      // Perbaikan: navigator.mediaDevices.getUserMedia adalah fungsi yang harus di-check keberadaannya saja
+      if (navigator.mediaDevices && typeof navigator.mediaDevices.getUserMedia === 'function') {
         setShowCamera(true);
       } else {
-        luxurySwal('Tidak Didukung', 'Browser Anda tidak mendukung akses kamera. Silakan gunakan Chrome atau Safari terbaru.', 'error');
+        luxurySwal('Tidak Didukung', 'Browser Anda tidak mendukung akses kamera.', 'error');
       }
     } catch (err) {
-      luxurySwal('Izin Ditolak', 'Mohon aktifkan izin kamera pada pengaturan browser Anda untuk mengambil foto.', 'error');
+      luxurySwal('Izin Ditolak', 'Mohon aktifkan izin kamera pada browser Anda.', 'error');
     }
   };
 
@@ -51,11 +61,15 @@ const GuestPhotoCapture = () => {
     }
   };
 
-  const handleFileUpload = (e) => {
-    const file = e.target.files[0];
+  // 4. Perbaikan Type pada Event Handler Upload
+  const handleFileUpload = (e: ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0];
     if (file) {
       const reader = new FileReader();
-      reader.onloadend = () => setImgSrc(reader.result);
+      reader.onloadend = () => {
+        const result = reader.result as string;
+        setImgSrc(result);
+      };
       reader.readAsDataURL(file);
     }
   };
@@ -81,12 +95,11 @@ const GuestPhotoCapture = () => {
         body: JSON.stringify({ image: imgSrc }),
       });
 
-      luxurySwal('Terima Kasih!', 'Kenangan Anda telah tersimpan di galeri kami.', 'success');
+      luxurySwal('Terima Kasih!', 'Kenangan Anda telah tersimpan.', 'success');
       setImgSrc(null);
       setTimeout(() => fetchGallery(), 3000);
-
     } catch (error) {
-      luxurySwal('Oops!', 'Gagal mengunggah foto. Silakan coba lagi.', 'error');
+      luxurySwal('Oops!', 'Gagal mengunggah foto.', 'error');
       console.error(error);
     } finally {
       setIsUploading(false);
@@ -99,7 +112,7 @@ const GuestPhotoCapture = () => {
       const data = await res.json();
       setGallery(data.files || []);
     } catch (err) { 
-      console.log("Galeri belum tersedia atau API sedang sibuk."); 
+      console.log("Galeri belum tersedia."); 
     }
   };
 
@@ -123,14 +136,14 @@ const GuestPhotoCapture = () => {
                 <button className="btn btn-outline-gold px-4 py-3 rounded-pill flex-grow-1" onClick={handleOpenCamera}>
                   <i className="bi bi-camera-fill me-2"></i> OPEN CAMERA
                 </button>
-                <button className="btn btn-gold-solid px-4 py-3 rounded-pill shadow flex-grow-1" onClick={() => fileInputRef.current.click()}>
+                {/* 5. Perbaikan: Optional chaining pada ref.current */}
+                <button className="btn btn-gold-solid px-4 py-3 rounded-pill shadow flex-grow-1" onClick={() => fileInputRef.current?.click()}>
                   <i className="bi bi-image me-2"></i> FROM GALLERY
                 </button>
                 <input type="file" ref={fileInputRef} className="d-none" accept="image/*" onChange={handleFileUpload} />
               </div>
             )}
 
-            {/* --- PERBAIKAN: Konfigurasi Webcam yang lebih stabil --- */}
             {showCamera && (
               <div className="camera-wrap position-relative rounded-4 overflow-hidden border-gold shadow-lg animate__animated animate__zoomIn bg-dark">
                 <Webcam 
@@ -143,9 +156,8 @@ const GuestPhotoCapture = () => {
                     width: { ideal: 1280 },
                     height: { ideal: 720 }
                   }}
-                  onUserMediaError={(err) => {
-                    console.error("Webcam Error:", err);
-                    luxurySwal('Kamera Gagal', 'Tidak dapat mengakses kamera. Pastikan browser diizinkan.', 'error');
+                  onUserMediaError={() => {
+                    luxurySwal('Kamera Gagal', 'Tidak dapat mengakses kamera.', 'error');
                     setShowCamera(false);
                   }}
                 />
@@ -198,57 +210,18 @@ const GuestPhotoCapture = () => {
       </div>
 
       <style>{`
-        .bg-black-transparent {
-          background: rgba(10, 10, 10, 0.85);
-          backdrop-filter: blur(15px);
-          -webkit-backdrop-filter: blur(15px);
-        }
+        .bg-black-transparent { background: rgba(10, 10, 10, 0.85); backdrop-filter: blur(15px); }
         .border-gold { border: 1.5px solid #d4af37 !important; }
         .border-gold-thin { border: 1px solid rgba(212, 175, 55, 0.3); }
         .gold-text { color: #d4af37; letter-spacing: 3px; }
         .text-light-white { color: rgba(255, 255, 255, 0.7); }
-        
-        .btn-gold-solid {
-          background: linear-gradient(135deg, #d4af37 0%, #f4e07d 50%, #d4af37 100%);
-          color: #000 !important;
-          font-weight: 700;
-          border: none;
-          transition: 0.3s ease;
-        }
-        .btn-gold-solid:hover { transform: translateY(-3px); box-shadow: 0 5px 15px rgba(212, 175, 55, 0.5); }
-        
-        .btn-outline-gold {
-          border: 1.5px solid #d4af37;
-          color: #d4af37;
-          background: transparent;
-        }
-        .btn-outline-gold:hover { background: #d4af37; color: #000; }
-
-        .aspect-ratio-square {
-          position: relative;
-          width: 100%;
-          padding-top: 100%; 
-        }
-        .img-gallery {
-          position: absolute;
-          top: 0; left: 0; bottom: 0; right: 0;
-          width: 100%; height: 100%;
-          object-fit: cover;
-        }
-
-        .divider-gold {
-          height: 2px;
-          background: linear-gradient(90deg, transparent, #d4af37, transparent);
-          margin: 0 auto;
-        }
-
+        .btn-gold-solid { background: linear-gradient(135deg, #d4af37 0%, #f4e07d 50%, #d4af37 100%); color: #000 !important; font-weight: 700; border: none; }
+        .btn-outline-gold { border: 1.5px solid #d4af37; color: #d4af37; }
+        .aspect-ratio-square { position: relative; width: 100%; padding-top: 100%; }
+        .img-gallery { position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; }
+        .divider-gold { height: 2px; background: linear-gradient(90deg, transparent, #d4af37, transparent); margin: 0 auto; }
         .border-gold-swal { border: 1px solid #d4af37 !important; border-radius: 20px !important; }
-        .gold-text-swal { color: #d4af37 !important; font-family: 'Serif', serif !important; }
-
-        @media (max-width: 576px) {
-          .tracking-widest { letter-spacing: 1.5px; }
-          .container-fluid { padding: 1.5rem !important; }
-        }
+        .gold-text-swal { color: #d4af37 !important; }
       `}</style>
     </div>
   );
