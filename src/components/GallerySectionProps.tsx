@@ -7,7 +7,7 @@ interface GallerySectionProps {
 }
 
 export const GallerySection: React.FC<GallerySectionProps> = ({ images }) => {
-  const topImages = images.slice(0, 3);
+  const topImages = images;
   const groupedImages = [];
   for (let i = 0; i < images.length; i += 3) {
     groupedImages.push(images.slice(i, i + 3));
