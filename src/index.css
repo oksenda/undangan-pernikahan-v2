@@ -1,0 +1,104 @@
+/* Import Font Mewah */
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Inter:wght@300;400;600&display=swap');
+
+:root {
+  /* Variabel Warna Minang */
+  --minang-red: #800000;
+  --minang-gold: #D4AF37;
+  --minang-gold-light: #F9E498;
+  --glass-bg: rgba(0, 0, 0, 0.6);
+  
+  /* Font Setup */
+  font-family: 'Inter', system-ui, sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+
+  /* Force Dark Mode agar background selalu hitam */
+  color-scheme: dark;
+  color: rgba(255, 255, 255, 0.87);
+  background-color: #000000; /* Hitam pekat agar kontras dengan emas */
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  margin: 0;
+  /* PERBAIKAN: Hapus place-items: center agar scroll tidak rusak */
+  display: block; 
+  min-width: 320px;
+  min-height: 100vh;
+  overflow-x: hidden;
+  background-color: #000000;
+}
+
+/* Judul dengan Font Serif Mewah */
+h1, h2, h3, .font-serif {
+  font-family: 'Playfair Display', serif;
+}
+
+/* Link Style Emas */
+a {
+  font-weight: 500;
+  color: var(--minang-gold);
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+a:hover {
+  color: var(--minang-gold-light);
+}
+
+/* Custom Gold Gradient Class */
+.gold-gradient {
+  background: linear-gradient(45deg, #BF953F, #FCF6BA, #B38728, #FBF5B7, #AA771C);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  color: transparent;
+  font-weight: bold;
+}
+
+/* Tombol Mewah Default */
+button {
+  border-radius: 50px; /* Lebih membulat agar modern */
+  border: 1px solid var(--minang-gold);
+  padding: 0.8em 2em;
+  font-size: 1em;
+  font-weight: 600;
+  font-family: inherit;
+  background: transparent;
+  color: var(--minang-gold);
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+button:hover {
+  background: var(--minang-gold);
+  color: #000000;
+  box-shadow: 0 0 15px rgba(212, 175, 55, 0.4);
+}
+
+button:focus,
+button:focus-visible {
+  outline: 2px solid var(--minang-gold);
+}
+
+/* Utility untuk Glassmorphism */
+.glass-card {
+  background: var(--glass-bg);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(212, 175, 55, 0.2);
+  border-radius: 20px;
+}
+
+/* Hilangkan paksaan warna terang dari sistem browser */
+@media (prefers-color-scheme: light) {
+  :root {
+    /* Tetap gunakan warna gelap untuk undangan pernikahan agar elegan */
+    color: rgba(255, 255, 255, 0.87);
+    background-color: #000000;
+  }
+}

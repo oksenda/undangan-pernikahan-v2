@@ -1,0 +1,43 @@
+{
+  "pengantin": {
+    "pria": {
+      "namaLengkap": "Oksenda Fauzon Putra",
+      "namaPanggilan": "Kiki",
+      "foto": "/assets/img1.jpeg",
+      "ayah": "Bpk. Faifil Misson",
+      "ibu": "Ibu Linda Wati"
+    },
+    "wanita": {
+      "namaLengkap": "Nia Yabunaiya",
+      "namaPanggilan": "Nia",
+      "foto": "/assets/img11.webp",
+      "ayah": "Bpk. Chandra",
+      "ibu": "Ibu Iwat"
+    }
+  },
+  "acara": {
+    "time": "2026-06-17T10:00:00",
+    "maleMembers":["Ayah: Faifil Misson", "Ibu: Linda Wati", "Adik: Salsa"],
+    "femaleMembers":["Ayah: Chandra", "Ibu: Iwat", "Adik: Ain"]
+  },
+  "assets":{
+    "musikLatar": "/assets/sound.mp3",
+    "galleryImages":[
+        "/assets/img1.jpeg",
+        "/assets/img2.jpeg",
+        "/assets/img3.jpeg",
+        "/assets/img4.jpeg",
+        "/assets/img5.jpeg",
+        "/assets/img6.jpeg",
+        "/assets/img7.jpeg",
+        "/assets/img8.jpeg",
+        "/assets/img9.jpeg",
+        "/assets/img10.jpeg",
+        "/assets/img11.webp"
+    ],
+    "cardImages":[
+        "/assets/img1.jpeg",
+        "/assets/img11.webp"
+    ]
+  }
+}

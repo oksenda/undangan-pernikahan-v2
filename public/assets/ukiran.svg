@@ -1,0 +1,37 @@
+<svg width="1000" height="150" viewBox="0 0 1000 150" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="gold-songket" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#FCF6BA" />
+      <stop offset="50%" stop-color="#D4AF37" />
+      <stop offset="100%" stop-color="#BF953F" />
+    </linearGradient>
+    
+    <g id="motif-minang">
+      <path d="M50 5 L95 145 H5 Z" stroke="url(#gold-songket)" stroke-width="1.5" />
+      <path d="M10 145 L50 15 L90 145" stroke="url(#gold-songket)" stroke-width="1" opacity="0.4" />
+      <path d="M20 145 L50 40 L80 145" stroke="url(#gold-songket)" stroke-width="1" opacity="0.6" />
+      
+      <path d="M50 70 L70 100 L50 130 L30 100 Z" fill="url(#gold-songket)" fill-opacity="0.3" stroke="url(#gold-songket)" stroke-width="1" />
+      <circle cx="50" cy="100" r="3" fill="#FCF6BA" />
+      
+      <circle cx="25" cy="140" r="2" fill="#D4AF37" />
+      <circle cx="75" cy="140" r="2" fill="#D4AF37" />
+      
+      <path d="M0 145 H100" stroke="url(#gold-songket)" stroke-width="3" />
+      <path d="M0 149 H100" stroke="url(#gold-songket)" stroke-width="1" />
+    </g>
+  </defs>
+
+  <g>
+    <use href="#motif-minang" x="0" />
+    <use href="#motif-minang" x="100" />
+    <use href="#motif-minang" x="200" />
+    <use href="#motif-minang" x="300" />
+    <use href="#motif-minang" x="400" />
+    <use href="#motif-minang" x="500" />
+    <use href="#motif-minang" x="600" />
+    <use href="#motif-minang" x="700" />
+    <use href="#motif-minang" x="800" />
+    <use href="#motif-minang" x="900" />
+  </g>
+</svg>
