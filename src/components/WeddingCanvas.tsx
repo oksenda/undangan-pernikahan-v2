@@ -19,6 +19,7 @@ import weddingData from "../data/wddingData.json";
 import { WeddingRingsScroll } from "./canvas/WeddingRingScroll";
 import GuestPhotoCapture from "./GuestPhotoCapture";
 import ScrollReveal from "./ScrollReveal";
+import CoupleSection from "./sections/CoupleSection";
 
 const WeddingCanvas: React.FC<{ guestName: string }> = ({ guestName }) => {
   const galleryImages = weddingData.assets.galleryImages;
@@ -79,6 +80,7 @@ const WeddingCanvas: React.FC<{ guestName: string }> = ({ guestName }) => {
             <ScrollReveal>
             <GreetingSection guestName={guestName} />
             </ScrollReveal>
+            <CoupleSection/>
           </section>
           
           <section id="event-section">

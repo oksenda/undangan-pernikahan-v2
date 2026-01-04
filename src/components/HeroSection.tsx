@@ -106,10 +106,10 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
                 “Dan di antara tanda-tanda kekuasaan-Nya ialah Dia menciptakan untukmu pasangan-pasangan dari jenismu sendiri...”
               </p>
               
-              {/* <div className="mb-4 text-warning">
+              <div className="mb-4 text-warning">
                 <p className="mb-0 fw-bold" style={{ letterSpacing: "1px", fontSize: "1rem" }}>{eventDate}</p>
-                <small className="opacity-75" style={{ fontSize: "0.7rem" }}>Resepsi Pernikahan</small>
-              </div> */}
+                {/* <small className="opacity-75" style={{ fontSize: "0.7rem" }}>Resepsi Pernikahan</small> */}
+              </div>
 
               {/* COUNTDOWN */}
               <div className="py-2 border-top border-bottom border-white border-opacity-25">
