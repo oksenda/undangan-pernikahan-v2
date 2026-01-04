@@ -108,7 +108,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
               
               <div className="mb-4 text-warning">
                 <p className="mb-0 fw-bold" style={{ letterSpacing: "1px", fontSize: "1rem" }}>{eventDate}</p>
-                <small className="opacity-75" style={{ fontSize: "0.7rem" }}>Akad & Resepsi Pernikahan</small>
+                <small className="opacity-75" style={{ fontSize: "0.7rem" }}>Resepsi Pernikahan</small>
               </div>
 
               {/* COUNTDOWN */}

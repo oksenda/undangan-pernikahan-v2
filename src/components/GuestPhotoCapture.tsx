@@ -47,6 +47,7 @@ const GuestPhotoCapture = () => {
         luxurySwal('Tidak Didukung', 'Browser Anda tidak mendukung akses kamera.', 'error');
       }
     } catch (err) {
+       console.error(err);
       luxurySwal('Izin Ditolak', 'Mohon aktifkan izin kamera pada browser Anda.', 'error');
     }
   };
@@ -112,6 +113,7 @@ const GuestPhotoCapture = () => {
       const data = await res.json();
       setGallery(data.files || []);
     } catch (err) { 
+       console.error(err);
       console.log("Galeri belum tersedia."); 
     }
   };

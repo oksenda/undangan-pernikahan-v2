@@ -2,11 +2,13 @@ import React, { useEffect, useState } from "react";
 import { Container, Card, Row, Col } from "react-bootstrap";
 
 interface WeddingTimeSectionProps {
-  targetDate: string; // Contoh: "2026-06-17T10:00:00"
+  targetDate: string;
+  title: string;
 }
 
 export const WeddingTimeSection: React.FC<WeddingTimeSectionProps> = ({ 
   targetDate,
+  title,
 }) => {
   const [countdown, setCountdown] = useState({ days: 0, hours: 0, minutes: 0, seconds: 0 });
 
@@ -21,7 +23,8 @@ export const WeddingTimeSection: React.FC<WeddingTimeSectionProps> = ({
         year: 'numeric',
       }).format(dateObj);
     } catch (e) {
-      return "Senin, 01 Juni 2026";
+       console.error(e);
+      throw new Error("Format waktu tidak valid atau data kosong");
     }
   };
 
@@ -33,7 +36,8 @@ export const WeddingTimeSection: React.FC<WeddingTimeSectionProps> = ({
       const menit = dateObj.getMinutes().toString().padStart(2, '0');
       return `${jam}:${menit} WIB`;
     } catch (e) {
-      return "10:00 WIB";
+      console.error(e);
+      throw new Error("Format waktu tidak valid atau data kosong");
     }
   };
 
@@ -62,8 +66,8 @@ export const WeddingTimeSection: React.FC<WeddingTimeSectionProps> = ({
 
   return (
     <section 
-      className="w-100 d-flex align-items-center justify-content-center py-5" 
-      style={{ minHeight: "100vh", background: "transparent" }}
+      className="w-auto d-flex align-items-center justify-content-center py-1" 
+      style={{ background: "transparent" }}
     >
       <Container className="d-flex justify-content-center px-3">
         <Card
@@ -89,7 +93,7 @@ export const WeddingTimeSection: React.FC<WeddingTimeSectionProps> = ({
                 fontSize: "calc(1.4rem + 1vw)" 
               }}
             >
-              Waktu Pernikahan
+              {title}
             </h2>
 
             <div className="mb-4">

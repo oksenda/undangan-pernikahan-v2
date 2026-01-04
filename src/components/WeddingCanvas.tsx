@@ -18,6 +18,7 @@ import { Environment } from "@react-three/drei";
 import weddingData from "../data/wddingData.json";
 import { WeddingRingsScroll } from "./canvas/WeddingRingScroll";
 import GuestPhotoCapture from "./GuestPhotoCapture";
+import ScrollReveal from "./ScrollReveal";
 
 const WeddingCanvas: React.FC<{ guestName: string }> = ({ guestName }) => {
   const galleryImages = weddingData.assets.galleryImages;
@@ -69,45 +70,67 @@ const WeddingCanvas: React.FC<{ guestName: string }> = ({ guestName }) => {
           {/* Tambahkan ID pada pembungkus section agar navigasi bisa melacak posisi */}
           
           <section id="home-section">
+            <ScrollReveal>
             <HeroSection guestName={guestName} />
+            </ScrollReveal>
           </section>
 
           <section id="couple-section">
+            <ScrollReveal>
             <GreetingSection guestName={guestName} />
+            </ScrollReveal>
           </section>
           
           <section id="event-section">
+            <ScrollReveal>
             <WeddingTimeSection 
               targetDate={weddingData.acara.time} 
+              title="Akad Pernikahan"
             />
+            </ScrollReveal>
+            <ScrollReveal>
+            <WeddingTimeSection 
+              targetDate={weddingData.acara.timeResepsi} 
+              title="Resepsi Pernikahan"
+            />
+            </ScrollReveal>
+            <ScrollReveal>
             <LocationSection />
+            </ScrollReveal>
           </section>
           
           <section id="gallery-section">
+            <ScrollReveal>
             <GallerySection images={galleryImages} />
+            </ScrollReveal>
           </section>
 
           <section id="gift-section">
+            <ScrollReveal>  
             <WeddingGiftList />
+            </ScrollReveal>
           </section>
 
           <section id="rsvp-section">
+            <ScrollReveal>
             <RSVPSection />
+            </ScrollReveal>
           </section>
 
           <section id="capture-section">
+            <ScrollReveal>
             <GuestPhotoCapture />
+            </ScrollReveal>
           </section>
           
           {/* Family Section bisa dimasukkan ke bagian penutup */}
+          <ScrollReveal>
           <FamilySection
             title="Keluarga Besar"
             maleMembers={weddingData.acara.maleMembers}
             femaleMembers={weddingData.acara.femaleMembers}
           />
-          
-
-          {/* Spacer Akhir */}
+          </ScrollReveal>
           <div style={{ height: "20vh" }} />
         </div>
       </div>

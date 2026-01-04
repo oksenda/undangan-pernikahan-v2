@@ -12,7 +12,6 @@ export const GreetingSection: React.FC<GreetingSectionProps> = ({ guestName }) =
     <section 
       className="w-100 d-flex align-items-center justify-content-center py-5"
       style={{ 
-        minHeight: "100vh",
         background: "transparent" 
       }}
     >
