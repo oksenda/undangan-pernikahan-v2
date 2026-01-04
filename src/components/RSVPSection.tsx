@@ -54,6 +54,7 @@ export const RSVPSection: React.FC = () => {
       // Reset form tanpa reload halaman
       setFormData({ nama: "", kehadiran: "Hadir", ucapan: "" });
     } catch (error) {
+      console.error("Error:", error);
       MySwal.fire("Error", "Gagal mengirim pesan", "error");
     } finally {
       setLoading(false);
