@@ -1,5 +1,5 @@
 import React from "react";
-import { Container, Row, Col } from "react-bootstrap";
+import { Container } from "react-bootstrap";
 import weddingData from "../data/wddingData.json";
 
 interface FamilySectionProps {
@@ -8,7 +8,7 @@ interface FamilySectionProps {
   femaleMembers: string[]; 
 }
 
-export const FamilySection: React.FC<FamilySectionProps> = ({ title, maleMembers, femaleMembers }) => {
+export const FamilySection: React.FC<FamilySectionProps> = () => {
   return (
     <section 
       className="py-5 d-flex align-items-center" 
@@ -79,64 +79,11 @@ export const FamilySection: React.FC<FamilySectionProps> = ({ title, maleMembers
             {weddingData.pengantin.pria.namaPanggilan} & {weddingData.pengantin.wanita.namaPanggilan}
           </h2>
         </div>
-
-        {/* DAFTAR KELUARGA BESAR */}
         <div className="mt-5 px-3">
-          <h5 
-            className="mb-5 fw-bold text-uppercase" 
-            style={{ 
-              color: "#D4AF37", 
-              letterSpacing: "4px", 
-              fontSize: "0.9rem",
-              borderBottom: "1px solid rgba(212, 175, 55, 0.3)",
-              display: "inline-block",
-              paddingBottom: "10px"
-            }}
-          >
-            {title}
-          </h5>
-          
-          <Row className="justify-content-center">
-            {/* KELUARGA PRIA */}
-            <Col xs={12} md={5} className="mb-5 mb-md-0">
-              <div className="family-box h-100 p-3">
-                <h6 className="fw-bold mb-4 text-uppercase" style={{ color: "#D4AF37", letterSpacing: "2px", fontSize: "0.85rem" }}>
-                  Keluarga Mempelai Pria
-                </h6>
-                <ul className="list-unstyled opacity-80" style={{ lineHeight: "2.4", fontSize: "1rem", fontWeight: "300" }}>
-                  {maleMembers.map((member, i) => (
-                    <li key={i} className="mb-1">{member}</li>
-                  ))}
-                </ul>
-              </div>
-            </Col>
-
-            {/* DIVIDER TENGAH (Hanya muncul di Desktop) */}
-            <Col md={1} className="d-none d-md-flex justify-content-center align-items-center">
-              <div style={{ width: "1px", height: "80%", background: "linear-gradient(to bottom, transparent, rgba(212,175,55,0.5), transparent)" }}></div>
-            </Col>
-
-            {/* KELUARGA WANITA */}
-            <Col xs={12} md={5}>
-              <div className="family-box h-100 p-3">
-                <h6 className="fw-bold mb-4 text-uppercase" style={{ color: "#D4AF37", letterSpacing: "2px", fontSize: "0.85rem" }}>
-                  Keluarga Mempelai Wanita
-                </h6>
-                <ul className="list-unstyled opacity-80" style={{ lineHeight: "2.4", fontSize: "1rem", fontWeight: "300" }}>
-                  {femaleMembers.map((member, i) => (
-                    <li key={i} className="mb-1">{member}</li>
-                  ))}
-                </ul>
-              </div>
-            </Col>
-          </Row>
-
           <p className="mt-5 opacity-40 fst-italic" style={{ fontSize: "0.85rem", letterSpacing: "1px" }}>
             & Seluruh Keluarga Besar
           </p>
         </div>
-
-        {/* ORNAMEN AKHIR */}
         <div className="mt-5 pt-4 opacity-50" style={{ letterSpacing: "15px", color: "#D4AF37", fontSize: "1.2rem" }}>
           ✦ ✦ ✦
         </div>
