@@ -3,44 +3,54 @@ import React, { useState, useEffect } from "react";
 import { Container, Form, Card, Row, Col, Badge } from "react-bootstrap";
 import Swal from "sweetalert2";
 import withReactContent from "sweetalert2-react-content";
+import { CONFIG } from "./config/url";
 
 const MySwal = withReactContent(Swal);
-const API_URL = "https://script.google.com/macros/s/AKfycbzDEfQHcdvzP0jCghTeEofYoAlh4PEvXOSJusmEbs460SxNzFEdmtfUbCUWv3WgGAopHw/exec";
+const API_URL = CONFIG.rsvpUrl;
+
+type RsvpEntry = { nama: string; kehadiran: string; ucapan: string };
 
 export const RSVPSection: React.FC = () => {
   const [formData, setFormData] = useState({ nama: "", kehadiran: "Hadir", ucapan: "" });
-  const [comments, setComments] = useState<{ nama: string; kehadiran: string; ucapan: string }[]>([]);
+  const [comments, setComments] = useState<RsvpEntry[]>([]);   // hanya yang ada ucapan
+  const [allRsvp, setAllRsvp] = useState<RsvpEntry[]>([]);     // semua data untuk counter
   const [loading, setLoading] = useState(false);
 
-  // Fetch data awal
   useEffect(() => {
     fetch(API_URL)
       .then((res) => res.json())
-      .then((data) => {
-        const filteredData = data.filter((item: any) => item.ucapan && item.ucapan.trim() !== "");
-        setComments(filteredData.reverse());
+      .then((data: RsvpEntry[]) => {
+        setAllRsvp(data);                                                                     // semua data
+        const withMessage = data.filter((item) => item.ucapan && item.ucapan.trim() !== "");
+        setComments([...withMessage].reverse());                                              // hanya yang ada ucapan
       })
       .catch((err) => console.error("Error:", err));
   }, []);
 
-  const totalHadir = comments.filter(c => c.kehadiran === "Hadir").length;
-  const totalAbsen = comments.filter(c => c.kehadiran === "Tidak Hadir").length;
+  // Counter dari allRsvp — akurat meski ucapan kosong
+  const totalHadir = allRsvp.filter(c => c.kehadiran === "Hadir").length;
+  const totalAbsen = allRsvp.filter(c => c.kehadiran === "Tidak Hadir").length;
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setLoading(true);
 
     try {
-      // Kirim ke Google Sheets
       await fetch(API_URL, {
         method: "POST",
         mode: "no-cors",
         body: JSON.stringify(formData),
       });
 
-      // SINGLE PAGE UPDATE: Tambahkan ke state lokal seketika
-      const newEntry = { ...formData };
-      setComments([newEntry, ...comments]);
+      const newEntry: RsvpEntry = { ...formData };
+
+      // Selalu tambah ke allRsvp untuk counter yang akurat
+      setAllRsvp(prev => [newEntry, ...prev]);
+
+      // Hanya tambah ke comments jika ada ucapan
+      if (newEntry.ucapan.trim() !== "") {
+        setComments(prev => [newEntry, ...prev]);
+      }
 
       MySwal.fire({
         title: <span style={{ color: "#D4AF37", fontFamily: "serif" }}>Terima Kasih!</span>,
@@ -51,7 +61,6 @@ export const RSVPSection: React.FC = () => {
         iconColor: "#D4AF37",
       });
 
-      // Reset form tanpa reload halaman
       setFormData({ nama: "", kehadiran: "Hadir", ucapan: "" });
     } catch (error) {
       console.error("Error:", error);
@@ -146,9 +155,8 @@ export const RSVPSection: React.FC = () => {
                 </div>
               </div>
 
-              {/* CONTAINER SCROLLABLE - Tinggi maksimal disesuaikan agar pas 3 item di HP */}
               <div className="custom-scroll pe-2" style={{ 
-                maxHeight: "410px", // Tinggi ideal untuk melihat ~3 ucapan pertama
+                maxHeight: "410px",
                 overflowY: "auto",
               }}>
                 {comments.length === 0 ? (
@@ -199,20 +207,10 @@ export const RSVPSection: React.FC = () => {
       </Container>
 
       <style>{`
-        .custom-scroll::-webkit-scrollbar {
-          width: 3px;
-        }
-        .custom-scroll::-webkit-scrollbar-track {
-          background: transparent;
-        }
-        .custom-scroll::-webkit-scrollbar-thumb {
-          background: rgba(212, 175, 55, 0.4);
-          border-radius: 10px;
-        }
-        input::placeholder, textarea::placeholder {
-          color: rgba(255,255,255,0.3) !important;
-          font-size: 0.8rem;
-        }
+        .custom-scroll::-webkit-scrollbar { width: 3px; }
+        .custom-scroll::-webkit-scrollbar-track { background: transparent; }
+        .custom-scroll::-webkit-scrollbar-thumb { background: rgba(212, 175, 55, 0.4); border-radius: 10px; }
+        input::placeholder, textarea::placeholder { color: rgba(255,255,255,0.3) !important; font-size: 0.8rem; }
       `}</style>
     </section>
   );

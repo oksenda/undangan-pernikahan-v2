@@ -1,6 +1,7 @@
 import { useState, useRef, useEffect, type ChangeEvent } from 'react';
 import Webcam from 'react-webcam';
 import Swal from 'sweetalert2';
+import { CONFIG } from "./config/url";
 
 // Definisi interface untuk data galeri dari Google Drive
 interface GalleryFile {
@@ -19,7 +20,7 @@ const GuestPhotoCapture = () => {
   const [isUploading, setIsUploading] = useState<boolean>(false);
   const [showCamera, setShowCamera] = useState<boolean>(false);
 
-  const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbxql-Gitbyyu6mSekjuzwGOnW-gBTr738KMdQgDWEZBfUIZXj3-v4T5DPKLSYfEef-izA/exec';
+  const SCRIPT_URL = CONFIG.guestPhotoUrl;
 
   // 3. Perbaikan Parameter Types pada luxurySwal
   const luxurySwal = (title: string, text: string, icon: 'success' | 'error' | 'warning' | 'info') => {

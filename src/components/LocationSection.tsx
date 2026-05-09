@@ -1,6 +1,7 @@
 import React from "react";
 import { Container, Card } from "react-bootstrap";
 import { GoogleMapsButton } from "./GoogleMapsButtonProps ";
+import { CONFIG } from "./config/url";
 
 export const LocationSection: React.FC = () => {
   return (
@@ -27,7 +28,7 @@ export const LocationSection: React.FC = () => {
             }}
           >
             <iframe
-              src="https://www.google.com/maps?q=0.1171486950210941,99.88443319856763&hl=id&z=17&output=embed" // TIDAK DIUBAH
+              src={CONFIG.mapsEmbedUrl}
               width="100%"
               height="100%"
               style={{ border: 0 }}
@@ -107,7 +108,7 @@ export const LocationSection: React.FC = () => {
                 
                 <div className="d-flex justify-content-center">
                   <div style={{ width: "100%", maxWidth: "300px" }}>
-                    <GoogleMapsButton url="https://www.google.com/maps?q=0.1171486950210941,99.88443319856763" /> 
+                    <GoogleMapsButton url={CONFIG.mapsDirectUrl} /> 
                   </div>
                 </div>
               </div>
