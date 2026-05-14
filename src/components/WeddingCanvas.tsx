@@ -1,7 +1,7 @@
 "use client";
-import React, { Suspense } from "react";
-import { Canvas } from "@react-three/fiber";
-import { useScroll, useSpring } from "framer-motion";
+// import React, { Suspense } from "react";
+// import { Canvas } from "@react-three/fiber";
+// import { useScroll, useSpring } from "framer-motion";
 
 // Import komponen UI
 import { HeroSection } from "./HeroSection";
@@ -12,11 +12,11 @@ import { GallerySection } from "./GallerySectionProps";
 import { WeddingTimeSection } from "./WeddingTimeSection";
 import WeddingGiftList from "./gif/WeddingGiftList";
 import { RSVPSection } from "./RSVPSection";
-import { Environment } from "@react-three/drei";
+// import { Environment } from "@react-three/drei";
 
 // Data & 3D
 import weddingData from "../data/wddingData.json";
-import { WeddingRingsScroll } from "./canvas/WeddingRingScroll";
+// import { WeddingRingsScroll } from "./canvas/WeddingRingScroll";
 import GuestPhotoCapture from "./GuestPhotoCapture";
 import ScrollReveal from "./ScrollReveal";
 import CoupleSection from "./sections/CoupleSection";
@@ -25,12 +25,12 @@ import SlideshowBackground from "./canvas/SlideshowBackground";
 const WeddingCanvas: React.FC<{ guestName: string }> = ({ guestName }) => {
   const galleryImages = weddingData.assets.galleryImages;
 
-  const { scrollYProgress } = useScroll();
-  const smoothProgress = useSpring(scrollYProgress, {
-    stiffness: 100,
-    damping: 30,
-    restDelta: 0.001
-  });
+  // const { scrollYProgress } = useScroll();
+  // const smoothProgress = useSpring(scrollYProgress, {
+  //   stiffness: 100,
+  //   damping: 30,
+  //   restDelta: 0.001
+  // });
 
   return (
     <div style={{ position: "relative", background: "black", width: "100%", minHeight: "100vh" }}>
