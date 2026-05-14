@@ -29,13 +29,13 @@
   "assets":{
     "musikLatar": "/assets/sound.mp3",
     "galleryImages":[
-        "/assets/berdua01.jpeg",
         "/assets/berdua02.jpeg",
-        "/assets/berdua03.jpeg",
-        "/assets/berdua04.jpeg",
+         "/assets/berdua04.jpeg",
+         "/assets/berdua03.jpeg",
+       
         "/assets/berdua2.jpg",
+         "/assets/berdua05.jpeg",
         "/assets/berdua1.jpg",        
-        "/assets/berdua05.jpeg",
         "/assets/berdua001.jpeg",
         "/assets/berdua002.jpeg"
     ],
