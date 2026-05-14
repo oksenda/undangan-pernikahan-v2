@@ -10,7 +10,7 @@ interface HeroSectionProps {
 
 export const HeroSection: React.FC<HeroSectionProps> = ({
   guestName,
-  weddingDate = weddingData.acara.time,
+  weddingDate = weddingData.acara.timeResepsiWanita,
   cardImages = weddingData.assets.cardImages
 }) => {
   const [countdown, setCountdown] = useState({ days: 0, hours: 0, minutes: 0 });

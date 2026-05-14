@@ -20,8 +20,9 @@
     }
   },
   "acara": {
-    "time": "2026-06-17T10:00:00",
-    "timeResepsi": "2026-06-18T10:00:00",
+    "timeResepsiWanita": "2026-06-18T10:00:00",
+    "timeResepsiPria": "2026-06-20T10:00:00",
+    "timeAkad": "2026-06-17T14:00:00",
     "maleMembers":["Ayah: Faifil Misson", "Ibu: Linda Wati", "Adik: Salsa"],
     "femaleMembers":["Ayah: Candra Gusra", "Ibu: Darmawati", "Adik: Ain"]
   },
@@ -32,6 +33,8 @@
         "/assets/berdua02.jpeg",
         "/assets/berdua03.jpeg",
         "/assets/berdua04.jpeg",
+        "/assets/berdua2.jpg",
+        "/assets/berdua1.jpg",        
         "/assets/berdua05.jpeg",
         "/assets/berdua001.jpeg",
         "/assets/berdua002.jpeg"

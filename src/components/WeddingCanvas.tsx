@@ -88,13 +88,13 @@ const WeddingCanvas: React.FC<{ guestName: string }> = ({ guestName }) => {
           <section id="event-section">
             <ScrollReveal>
             <WeddingTimeSection 
-              targetDate={weddingData.acara.time} 
+              targetDate={weddingData.acara.timeAkad} 
               title="Akad Pernikahan"
             />
             </ScrollReveal>
             <ScrollReveal>
             <WeddingTimeSection 
-              targetDate={weddingData.acara.timeResepsi} 
+              targetDate={weddingData.acara.timeResepsiWanita} 
               title="Resepsi Pernikahan"
             />
             </ScrollReveal>
