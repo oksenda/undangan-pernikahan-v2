@@ -9,9 +9,12 @@ const MySwal = withReactContent(Swal);
 const API_URL = CONFIG.rsvpUrl;
 
 type RsvpEntry = { nama: string; kehadiran: string; ucapan: string };
+interface RsvpSectionProps {
+  guestName: string;
+}
 
-export const RSVPSection: React.FC = () => {
-  const [formData, setFormData] = useState({ nama: "", kehadiran: "Hadir", ucapan: "" });
+export const RSVPSection: React.FC<RsvpSectionProps> = ({ guestName }) => {
+  const [formData, setFormData] = useState({ nama: guestName, kehadiran: "Hadir", ucapan: "" });
   const [comments, setComments] = useState<RsvpEntry[]>([]);   // hanya yang ada ucapan
   const [allRsvp, setAllRsvp] = useState<RsvpEntry[]>([]);     // semua data untuk counter
   const [loading, setLoading] = useState(false);

@@ -117,7 +117,7 @@ const WeddingCanvas: React.FC<{ guestName: string }> = ({ guestName }) => {
 
           <section id="rsvp-section">
             <ScrollReveal>
-            <RSVPSection />
+            <RSVPSection guestName={guestName} />
             </ScrollReveal>
           </section>
 
