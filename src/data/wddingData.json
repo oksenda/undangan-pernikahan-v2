@@ -3,7 +3,7 @@
     "pria": {
       "namaLengkap": "Oksenda Fauzon Putra",
       "namaPanggilan": "Kiki",
-      "foto": "/assets/kiki1.jpg",
+      "foto": "/assets/kiki001.jpeg",
       "foto2":"/assets/kiki01.jpeg",
       "pas_foto":"/assets/paskiki1.jpg",
       "ayah": "Faifil Misson",
@@ -32,7 +32,9 @@
         "/assets/berdua02.jpeg",
         "/assets/berdua03.jpeg",
         "/assets/berdua04.jpeg",
-        "/assets/berdua05.jpeg"
+        "/assets/berdua05.jpeg",
+        "/assets/berdua001.jpeg",
+        "/assets/berdua002.jpeg"
     ],
     "cardImages":[
         "/assets/berdua1.jpg",

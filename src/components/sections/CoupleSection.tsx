@@ -17,7 +17,7 @@ const CoupleSection: React.FC = () => {
       info: `Putri pertama dari Bapak ${
         weddingData.pengantin.wanita.ayah
       } & Ibu ${weddingData.pengantin.wanita.ibu}`,
-      image: weddingData.pengantin.wanita.foto,
+      image: weddingData.pengantin.wanita.foto2,
     },
   };
 

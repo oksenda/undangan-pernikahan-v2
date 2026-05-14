@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import React, { useMemo } from "react";
+import React from "react";
 import { Container, Carousel, Image } from "react-bootstrap";
 
 interface GallerySectionProps {
@@ -8,12 +8,12 @@ interface GallerySectionProps {
 
 export const GallerySection: React.FC<GallerySectionProps> = ({ images }) => {
 
-  const rotations = useMemo(() => {
-    return images.map((_, i) => {
-      const tilt = ((i * 13) % 6) - 3;
-      return tilt === 0 ? 2 : tilt;
-    });
-  }, [images]);
+  // const rotations = useMemo(() => {
+  //   return images.map((_, i) => {
+  //     const tilt = ((i * 13) % 6) - 3;
+  //     return tilt === 0 ? 2 : tilt;
+  //   });
+  // }, [images]);
 
   return (
     <section className="py-5" style={{ position: "relative", zIndex: 10 }}>
@@ -53,8 +53,7 @@ export const GallerySection: React.FC<GallerySectionProps> = ({ images }) => {
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ 
                 opacity: 1, 
-                y: 0,
-                rotate: rotations[i] // Memakai hasil rumus matematika di atas
+                y: 0
               }}
               viewport={{ once: true, amount: 0.1 }} 
               transition={{ duration: 0.6, delay: (i % 3) * 0.1 }}

@@ -1,5 +1,5 @@
 "use client";
-import { useState, useLayoutEffect } from "react";
+import { useState } from "react";
 import { Container } from "react-bootstrap";
 // Import aset dan data
 import weddingData from "./data/wddingData.json";
@@ -10,17 +10,13 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 
 function App() {
   const [isOpen, setIsOpen] = useState(false);
-  const [isPlaying, setIsPlaying] = useState(false); // State untuk kontrol musik manual
-  const [guestName, setGuestName] = useState("Tamu Kehormatan");
+  const [isPlaying, setIsPlaying] = useState(false);
 
-  useLayoutEffect(() => {
-    // Mengambil nama tamu dari URL (?to=Nama)
-    const params = new URLSearchParams(window.location.search);
-    const to = params.get("to");
-    if (to && to.trim() !== "") {
-      setGuestName(to);
-    }
-  }, []);
+const guestName =
+  typeof window !== "undefined"
+    ? new URLSearchParams(window.location.search).get("to")?.trim() ||
+      "Tamu Kehormatan"
+    : "Tamu Kehormatan";
 
   // Fungsi untuk membuka undangan
   const handleOpenInvitation = () => {
