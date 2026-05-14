@@ -41,7 +41,7 @@ export const GreetingSection: React.FC<GreetingSectionProps> = ({ guestName }) =
                   borderRadius: "50%",
                 }}>
                   <Image 
-                    src={pengantin.pria.pas_foto} 
+                    src={pengantin.pria.foto2} 
                     roundedCircle 
                     style={{ 
                       width: "calc(50px + 3vw)", // Ukuran dinamis
@@ -73,7 +73,7 @@ export const GreetingSection: React.FC<GreetingSectionProps> = ({ guestName }) =
                   borderRadius: "50%",
                 }}>
                   <Image 
-                    src={pengantin.wanita.pas_foto}
+                    src={pengantin.wanita.foto2}
                     roundedCircle 
                     style={{ 
                       width: "calc(50px + 3vw)", 
