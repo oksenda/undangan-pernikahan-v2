@@ -26,17 +26,11 @@
   "assets":{
     "musikLatar": "/assets/sound.mp3",
     "galleryImages":[
-        "/assets/img1.jpeg",
-        "/assets/img2.jpeg",
-        "/assets/img3.jpeg",
-        "/assets/img4.jpeg",
-        "/assets/img5.jpeg",
-        "/assets/img6.jpeg",
-        "/assets/img7.jpeg",
-        "/assets/img8.jpeg",
-        "/assets/img9.jpeg",
-        "/assets/img10.jpeg",
-        "/assets/img11.webp"
+        "/assets/berdua01.jpeg",
+        "/assets/berdua02.jpeg",
+        "/assets/berdua03.jpeg",
+        "/assets/berdua04.jpeg",
+        "/assets/berdua05.jpeg"
     ],
     "cardImages":[
         "/assets/berdua1.jpg",

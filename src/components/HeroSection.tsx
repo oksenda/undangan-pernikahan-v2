@@ -25,7 +25,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
   useEffect(() => {
     const slideTimer = setInterval(() => {
       setCurrentImgIndex((prev) => (prev + 1) % cardImages.length);
-    }, 4000); // Ganti gambar setiap 4 detik
+    }, 4000);
     return () => clearInterval(slideTimer);
   }, [cardImages.length]);
 

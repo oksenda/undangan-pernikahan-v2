@@ -2,8 +2,6 @@ import { Float, Sparkles, Cloud, Environment } from "@react-three/drei"
 import { useThree, useFrame } from "@react-three/fiber"
 import { useRef, useMemo, useEffect } from "react"
 import * as THREE from "three"
-
-// Helper untuk posisi acak kelopak bunga
 function pseudoRandom(seed: number) {
   const x = Math.sin(seed) * 10000
   return x - Math.floor(x)
@@ -65,13 +63,8 @@ function Petals() {
     </instancedMesh>
   )
 }
-
-// PERBAIKAN: Terima scrollProgress sebagai props (MotionValue dari Framer Motion)
 export function WeddingRingsScroll({ scrollProgress }: { scrollProgress: any }) {
   const { size } = useThree()
-  
-  // HAPUS BARIS INI: const scroll = useScroll() 
-  // Karena kita pakai scrollProgress dari props
 
   const isMobile = size.width < 768
   const scale = isMobile ? 0.7 : 1.3
@@ -90,7 +83,7 @@ export function WeddingRingsScroll({ scrollProgress }: { scrollProgress: any }) 
   }, [])
 
   useFrame(() => {
-    // AMBIL NILAI SCROLL DARI PROPS
+
     const p = scrollProgress.get() 
 
     if (ringsRef.current) {
