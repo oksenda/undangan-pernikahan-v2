@@ -13,7 +13,7 @@ interface ProfileContextType {
 export const ProfileContext = createContext<ProfileContextType | null>(null);
 
 export const ProfileProvider = ({ children }: { children: React.ReactNode }) => {
-  const [profileType, setProfileType] = useState<ProfileName>("wanita");
+  const [profileType, setProfileType] = useState<ProfileName>("pria");
   const profile = ProfileActive(profileType);
 
   return (
