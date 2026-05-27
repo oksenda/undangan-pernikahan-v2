@@ -18,16 +18,16 @@ export const GifAccount: Record<ProfileName, GiftCardProps[]> = {
   ],
   wanita: [
     {
-      provider: "BCA",
+      provider: "BNI",
       type: "BANK",
-      accountNumber: "0987654321",
-      owner: "Nia Aprilia",
+      accountNumber: "1922868531",
+      owner: "Nia Yabunaiya",
     },
     {
-      provider: "OVO",
-      type: "OVO",
-      accountNumber: "081298765432",
-      owner: "Nia Aprilia",
+      provider: "BRI",
+      type: "BANK",
+      accountNumber: "542701023599530",
+      owner: "Nia Yabunaiya",
     },
   ],
 };
