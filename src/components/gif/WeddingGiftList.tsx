@@ -1,8 +1,13 @@
 import { Container, Row, Col } from "react-bootstrap";
 import GiftCard from "./GiftCard";
 import { GifAccount } from "../../data/GifAccount";
+import { useProfile } from "../../hooks/useProfile";
 
 export default function WeddingGiftList() {
+  const { profile } = useProfile();
+  const profileName = profile.profileName;
+  const gifAccounts = GifAccount[profileName] || [];
+
   return (
     <section 
       className="py-5 position-relative" 
@@ -67,7 +72,7 @@ export default function WeddingGiftList() {
 
           {/* Grid Kartu Gift */}
           <Row className="g-4 justify-content-center">
-            {GifAccount.map((acc, i) => (
+            {gifAccounts.map((acc, i) => (
               <Col xs={12} lg={6} xl={5} className="d-flex justify-content-center" key={i}>
                 <GiftCard {...acc} />
               </Col>

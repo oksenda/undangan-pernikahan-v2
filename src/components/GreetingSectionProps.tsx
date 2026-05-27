@@ -1,6 +1,6 @@
 import React from "react";
 import { Container, Card, Row, Col, Image } from "react-bootstrap";
-import weddingData from "../data/wddingData.json";
+import weddingData from "../data/weddingData.json";
 
 interface GreetingSectionProps {
   guestName: string;

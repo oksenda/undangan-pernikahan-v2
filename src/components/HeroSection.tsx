@@ -1,18 +1,20 @@
 import React, { useEffect, useState } from "react";
 import { Container, Card, Row, Col } from "react-bootstrap";
-import weddingData from "../data/wddingData.json";
+import weddingData from "../data/weddingData.json";
+import { useProfile } from "../hooks/useProfile";
 
 interface HeroSectionProps {
   guestName: string;
-  weddingDate?: string;
   cardImages?: string[];
 }
 
 export const HeroSection: React.FC<HeroSectionProps> = ({
   guestName,
-  weddingDate = weddingData.acara.timeResepsiWanita,
   cardImages = weddingData.assets.cardImages
 }) => {
+   const { profile} = useProfile();
+  const profileData = profile; // Data profil aktif berdasarkan context
+   const   weddingDate = profileData.timeResepsi;
   const [countdown, setCountdown] = useState({ days: 0, hours: 0, minutes: 0 });
   const [currentImgIndex, setCurrentImgIndex] = useState(0);
 

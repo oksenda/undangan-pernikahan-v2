@@ -1,7 +1,7 @@
 import React from "react";
 import { motion } from "framer-motion";
 import ScrollReveal from "../ScrollReveal";
-import weddingData from "../../data/wddingData.json";
+import weddingData from "../../data/weddingData.json";
 import QuranVerse from "../attributes/QuranVerse";
 const CoupleSection: React.FC = () => {
   const coupleData = {

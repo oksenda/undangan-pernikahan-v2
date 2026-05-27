@@ -1,6 +1,6 @@
 "use client";
 import { useEffect, useRef} from "react";
-import weddingData from "../data/wddingData.json";
+import weddingData from "../data/weddingData.json";
 
 export default function MusicPlayer({ isPlaying }: { isPlaying: boolean }) {
   const audioRef = useRef<HTMLAudioElement | null>(null);
