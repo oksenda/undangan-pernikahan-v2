@@ -3,10 +3,9 @@ import React, { useState, useEffect } from "react";
 import { Container, Form, Card, Row, Col, Badge } from "react-bootstrap";
 import Swal from "sweetalert2";
 import withReactContent from "sweetalert2-react-content";
-import { CONFIG } from "./config/url";
+import { useProfile } from "../hooks/useProfile";
 
 const MySwal = withReactContent(Swal);
-const API_URL = CONFIG.rsvpUrl;
 
 type RsvpEntry = { nama: string; kehadiran: string; ucapan: string };
 interface RsvpSectionProps {
@@ -14,18 +13,21 @@ interface RsvpSectionProps {
 }
 
 export const RSVPSection: React.FC<RsvpSectionProps> = ({ guestName }) => {
+  const { profile } = useProfile();
+  const profileData = profile;
+  const API_URL = profileData.rsvpUrl;
   const [formData, setFormData] = useState({ nama: guestName, kehadiran: "Hadir", ucapan: "" });
-  const [comments, setComments] = useState<RsvpEntry[]>([]);   // hanya yang ada ucapan
-  const [allRsvp, setAllRsvp] = useState<RsvpEntry[]>([]);     // semua data untuk counter
+  const [comments, setComments] = useState<RsvpEntry[]>([]);   
+  const [allRsvp, setAllRsvp] = useState<RsvpEntry[]>([]);     
   const [loading, setLoading] = useState(false);
 
   useEffect(() => {
     fetch(API_URL)
       .then((res) => res.json())
       .then((data: RsvpEntry[]) => {
-        setAllRsvp(data);                                                                     // semua data
+        setAllRsvp(data);                                                                    
         const withMessage = data.filter((item) => item.ucapan && item.ucapan.trim() !== "");
-        setComments([...withMessage].reverse());                                              // hanya yang ada ucapan
+        setComments([...withMessage].reverse());                                            
       })
       .catch((err) => console.error("Error:", err));
   }, []);

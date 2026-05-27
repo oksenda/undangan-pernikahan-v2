@@ -1,7 +1,7 @@
 import { useState, useRef, useEffect, type ChangeEvent } from 'react';
 import Webcam from 'react-webcam';
 import Swal from 'sweetalert2';
-import { CONFIG } from "./config/url";
+import { CONFIG } from "../config/url";
 
 // Definisi interface untuk data galeri dari Google Drive
 interface GalleryFile {

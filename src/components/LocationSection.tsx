@@ -1,9 +1,12 @@
 import React from "react";
 import { Container, Card } from "react-bootstrap";
 import { GoogleMapsButton } from "./GoogleMapsButtonProps ";
-import { CONFIG } from "./config/url";
+import { useProfile } from "../hooks/useProfile";
 
 export const LocationSection: React.FC = () => {
+  const { profile } = useProfile();
+  const profileData = profile;
+
   return (
     <section className="w-100 min-vh-100 d-flex align-items-center justify-content-center bg-transparent py-3 py-md-5">
       <Container className="d-flex justify-content-center px-2 px-md-3" fluid="md">
@@ -28,7 +31,7 @@ export const LocationSection: React.FC = () => {
             }}
           >
             <iframe
-              src={CONFIG.mapsEmbedUrl}
+              src={profileData.mapsEmbedUrl}
               width="100%"
               height="100%"
               style={{ border: 0 }}
@@ -108,7 +111,7 @@ export const LocationSection: React.FC = () => {
                 
                 <div className="d-flex justify-content-center">
                   <div style={{ width: "100%", maxWidth: "300px" }}>
-                    <GoogleMapsButton url={CONFIG.mapsDirectUrl} /> 
+                    <GoogleMapsButton url={profileData.mapsDirectUrl} /> 
                   </div>
                 </div>
               </div>

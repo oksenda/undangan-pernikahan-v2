@@ -2,10 +2,11 @@
 import { useState } from "react";
 import { Container } from "react-bootstrap";
 // Import aset dan data
-import weddingData from "./data/wddingData.json";
+import weddingData from "./data/weddingData.json";
 import MusicPlayer from "./components/MusicPlayer";
 import WeddingCanvas from "./components/WeddingCanvas";
-import { FloatingNav } from "./components/FloatingNav"; // Pastikan path benar
+import { FloatingNav } from "./components/FloatingNav";
+import { ProfileProvider } from "./context/profileContext";
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 function App() {
@@ -30,6 +31,7 @@ const guestName =
   };
 
   return (
+    <ProfileProvider>
     <main style={{ 
       width: "100vw", 
       minHeight: "100vh", 
@@ -122,6 +124,7 @@ const guestName =
         </div>
       )}
     </main>
+    </ProfileProvider>
   );
 }
 

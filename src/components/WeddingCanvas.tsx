@@ -15,15 +15,18 @@ import { RSVPSection } from "./RSVPSection";
 // import { Environment } from "@react-three/drei";
 
 // Data & 3D
-import weddingData from "../data/wddingData.json";
+import weddingData from "../data/weddingData.json";
 // import { WeddingRingsScroll } from "./canvas/WeddingRingScroll";
 import GuestPhotoCapture from "./GuestPhotoCapture";
 import ScrollReveal from "./ScrollReveal";
 import CoupleSection from "./sections/CoupleSection";
 import SlideshowBackground from "./canvas/SlideshowBackground";
+import {useProfile} from "../hooks/useProfile";
 
 const WeddingCanvas: React.FC<{ guestName: string }> = ({ guestName }) => {
   const galleryImages = weddingData.assets.galleryImages;
+    const { profile} = useProfile();
+  const profileData = profile; 
 
   // const { scrollYProgress } = useScroll();
   // const smoothProgress = useSpring(scrollYProgress, {
@@ -88,13 +91,13 @@ const WeddingCanvas: React.FC<{ guestName: string }> = ({ guestName }) => {
           <section id="event-section">
             <ScrollReveal>
             <WeddingTimeSection 
-              targetDate={weddingData.acara.timeAkad} 
+              targetDate={profileData.timeAkad} 
               title="Akad Pernikahan"
             />
             </ScrollReveal>
             <ScrollReveal>
             <WeddingTimeSection 
-              targetDate={weddingData.acara.timeResepsiWanita} 
+              targetDate={profileData.timeResepsi} 
               title="Resepsi Pernikahan"
             />
             </ScrollReveal>

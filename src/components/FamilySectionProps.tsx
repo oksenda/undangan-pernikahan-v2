@@ -1,6 +1,6 @@
 import React from "react";
 import { Container } from "react-bootstrap";
-import weddingData from "../data/wddingData.json";
+import weddingData from "../data/weddingData.json";
 
 interface FamilySectionProps {
   title: string;
