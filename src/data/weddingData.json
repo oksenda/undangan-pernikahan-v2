@@ -42,6 +42,7 @@
     "cardImages":[
         "/assets/berdua1.jpg",
         "/assets/berdua2.jpg"
-    ]
+    ],
+    "bgFront": "/assets/berdua05.jpeg"
   }
 }
