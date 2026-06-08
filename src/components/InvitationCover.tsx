@@ -62,10 +62,10 @@ const InvitationCover = ({
           className="mx-auto my-5 p-4"
           style={{
             maxWidth: "450px",
-            background: "rgba(255, 255, 255, 0.03)",
-            backdropFilter: "blur(10px)",
+       background: "transparent", 
+                backdropFilter: "none", 
             borderRadius: "25px",
-            border: "1px solid rgba(212, 175, 55, 0.2)",
+            border: "3px solid rgba(212, 175, 55, 0.2)",
           }}
         >
           <p
